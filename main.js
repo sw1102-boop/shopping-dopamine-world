@@ -68,7 +68,7 @@ var basketSpeed = 600;                  // 방향키 이동 속도(px/sec) — s
 
 // 영수증 캔버스에 그릴 LOTTE 로고 (미리 로드)
 var logoImg = new Image();
-logoImg.src = 'img/lotte-logo.png';
+logoImg.src = 'lotte-logo.png';
 // ! [E]
 
 // ! [S] 화면 전환
