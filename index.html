@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>쇼핑 도파민 월드 🛒</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://m.lotteshopping.com/resources-lddi/js/jquery-1.12.4.min.js?v=20260414233208"></script>
+</head>
+<body>
+
+<div class="eventBox">
+  <div class="grid-bg"></div>
+
+  <!-- 헤더 -->
+  <header class="arcade-header">
+    <img class="brand-logo" src="img/lotte-logo.png" alt="LOTTE DEPARTMENT STORE">
+    <span class="arcade-coin">★ INSERT COIN ★</span>
+  </header>
+
+  <!-- ══ SCREEN 0: START ══ -->
+  <div class="screen active" id="startScreen">
+    <div class="title-wrap">
+      <span class="title-cart">🛒</span>
+      <h1 class="title-main">쇼핑 도파민<br>월드</h1>
+      <div class="title-sub">
+        <b>30초 만에 백화점 털기</b><br>
+        떨어지는 명품을 쓸어 담아라!
+      </div>
+    </div>
+
+    <div class="rules">
+      <div class="rules-ttl">▶ HOW TO PLAY ◀</div>
+      <div class="rule-row">
+        <span class="rule-ico">🛍️</span>
+        <span>화면을 <span class="cool">드래그</span>해서 쇼핑백을 좌우로 움직여요</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-ico">💎</span>
+        <span><span class="hot">비싼 명품</span>일수록 점수가 팡팡! 콤보로 배수 UP</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-ico">🧾</span>
+        <span><span class="warn">영수증 폭탄</span>은 금액이 확 깎여요. 피하세요!</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-ico">⏱️</span>
+        <span>제한시간 <span class="hot">30초</span>! 최대한 많이 털어버려요</span>
+      </div>
+    </div>
+
+    <button class="btn-arcade" id="startBtn">▶ 게임 시작 ◀</button>
+    <p class="blink-tip">- PRESS START -</p>
+  </div>
+
+  <!-- ══ SCREEN 1: COUNTDOWN ══ -->
+  <div class="flex-mid" id="countScreen">
+    <div class="count-num" id="countNum">3</div>
+    <div class="count-label">쇼핑백 준비!</div>
+  </div>
+
+  <!-- ══ SCREEN 2: GAME ══ -->
+  <div class="screen" id="gameScreen">
+    <div class="hud">
+      <div class="hud-box">
+        <div class="hud-lbl">TIME</div>
+        <div class="hud-val" id="timeVal">30</div>
+      </div>
+      <div class="hud-box money">
+        <div class="hud-lbl">털어버린 금액</div>
+        <div class="hud-val" id="moneyVal">0원</div>
+      </div>
+    </div>
+    <div class="timebar-wrap"><div class="timebar" id="timeBar"></div></div>
+    <div class="combo-tag" id="comboTag"></div>
+
+    <div class="stage" id="stage">
+      <div class="catch-line"></div>
+      <div class="stage-flash" id="stageFlash"></div>
+      <div class="basket" id="basket">
+        <div class="bag">
+          <span class="bag-handle"></span>
+          <img class="bag-img" src="img/lotte-logo.png" alt="LOTTE 쇼핑백">
+        </div>
+      </div>
+    </div>
+
+    <!-- 방향 조작 버튼 (키보드 ←→ 도 지원) -->
+    <div class="dpad">
+      <button class="dpad-btn" id="leftBtn" aria-label="왼쪽">◀</button>
+      <span class="dpad-hint">드래그 · 방향키 · 버튼으로 이동</span>
+      <button class="dpad-btn" id="rightBtn" aria-label="오른쪽">▶</button>
+    </div>
+  </div>
+
+  <!-- ══ SCREEN 3: RESULT ══ -->
+  <div class="screen" id="resultScreen">
+    <div class="result-top">🎉 게임 종료! 🎉</div>
+
+    <div class="receipt" id="receipt">
+      <img class="rc-logo" src="img/lotte-logo.png" alt="LOTTE DEPARTMENT STORE">
+      <div class="rc-sub">쇼핑 도파민 월드 · 30SEC RECEIPT</div>
+      <div class="rc-gap"></div>
+      <div class="rc-title">- 30초간 털어버린 품목 -</div>
+      <div id="rcItems"></div>
+      <div class="rc-gap"></div>
+      <div class="rc-total-box">
+        <span class="rc-total-lbl">합계 TOTAL</span>
+        <span class="rc-total-amt" id="rcTotal">0원</span>
+      </div>
+      <div class="rc-rank" id="rcRank"></div>
+      <div class="rc-gap"></div>
+      <div class="rc-foot" id="rcFoot">2026 LOTTE · THANK YOU</div>
+    </div>
+
+    <div class="result-stats">
+      <div class="stat-box">
+        <div class="s-lbl">담은 개수</div>
+        <div class="s-val" id="statCount">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="s-lbl">최고 콤보</div>
+        <div class="s-val" id="statCombo">0</div>
+      </div>
+    </div>
+
+    <div class="action-btns">
+      <button class="btn-arcade cyan" id="saveBtn">💾 영수증 저장하기</button>
+      <button class="btn-arcade" id="retryBtn">🔄 다시 털러 가기</button>
+    </div>
+  </div>
+
+</div><!-- /.eventBox -->
+
+<div class="scanlines"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

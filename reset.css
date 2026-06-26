@@ -1,0 +1,11 @@
+/* ── reset ── */
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html, body { width:100%; }
+ul, ol, li { list-style:none; }
+img { display:block; max-width:100%; border:0; }
+button, input { font-family:inherit; color:inherit; }
+button { cursor:pointer; background:none; border:none; }
+a { text-decoration:none; color:inherit; }
+input:focus, button:focus { outline:none; }
+table { border-collapse:collapse; border-spacing:0; }
+em, i { font-style:normal; }
